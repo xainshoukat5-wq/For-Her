@@ -1,0 +1,712 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>❤️ Our Love Story ❤️</title>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Segoe UI',sans-serif;
+}
+
+body{
+
+background:linear-gradient(135deg,#ff9a9e,#fad0c4,#ffe6f2);
+
+height:100vh;
+
+overflow:hidden;
+
+display:flex;
+
+justify-content:center;
+
+align-items:center;
+
+}
+
+/* ===============================
+   Falling Roses
+================================= */
+
+.roses{
+
+position:fixed;
+
+top:0;
+
+left:0;
+
+width:100%;
+
+height:100%;
+
+pointer-events:none;
+
+overflow:hidden;
+
+}
+
+.rose{
+
+position:absolute;
+
+top:-50px;
+
+font-size:28px;
+
+animation:fall linear infinite;
+
+}
+
+@keyframes fall{
+
+0%{
+
+transform:translateY(-50px) rotate(0deg);
+
+opacity:1;
+
+}
+
+100%{
+
+transform:translateY(110vh) rotate(360deg);
+
+opacity:.8;
+
+}
+
+}
+
+/* ===============================
+Floating Hearts
+================================= */
+
+.hearts{
+
+position:fixed;
+
+width:100%;
+
+height:100%;
+
+pointer-events:none;
+
+overflow:hidden;
+
+}
+
+.heart{
+
+position:absolute;
+
+bottom:-50px;
+
+font-size:24px;
+
+animation:floatHeart linear infinite;
+
+opacity:.8;
+
+}
+
+@keyframes floatHeart{
+
+0%{
+
+transform:translateY(0);
+
+opacity:.9;
+
+}
+
+100%{
+
+transform:translateY(-120vh);
+
+opacity:0;
+
+}
+
+}
+
+/* ===============================
+Glass Card
+================================= */
+
+.card{
+
+width:92%;
+
+max-width:560px;
+
+background:rgba(255,255,255,.25);
+
+backdrop-filter:blur(18px);
+
+padding:30px;
+
+border-radius:25px;
+
+box-shadow:0 0 35px rgba(0,0,0,.25);
+
+text-align:center;
+
+border:2px solid rgba(255,255,255,.4);
+
+z-index:10;
+
+animation:popup .8s;
+
+}
+
+@keyframes popup{
+
+0%{
+
+transform:scale(.6);
+
+opacity:0;
+
+}
+
+100%{
+
+transform:scale(1);
+
+opacity:1;
+
+}
+
+}
+
+h1{
+
+color:#e91e63;
+
+margin-bottom:20px;
+
+font-size:34px;
+
+}
+
+#question{
+
+font-size:25px;
+
+font-weight:bold;
+
+line-height:1.7;
+
+margin-bottom:20px;
+
+color:#333;
+
+}
+
+#message{
+
+font-size:19px;
+
+line-height:1.8;
+
+color:#555;
+
+margin-bottom:25px;
+
+}
+
+button{
+
+padding:13px 30px;
+
+font-size:20px;
+
+border:none;
+
+border-radius:40px;
+
+cursor:pointer;
+
+margin:10px;
+
+transition:.3s;
+
+}
+
+.yes{
+
+background:#4CAF50;
+
+color:white;
+
+}
+
+.no{
+
+background:#f44336;
+
+color:white;
+
+position:relative;
+
+}
+
+#funny{
+
+font-size:19px;
+
+font-weight:bold;
+
+color:#e91e63;
+
+margin-top:20px;
+
+}
+
+#progress{
+
+font-size:20px;
+
+font-weight:bold;
+
+color:#d81b60;
+
+margin-bottom:20px;
+
+}
+
+</style>
+
+<!-- ===========================
+PASTE PART 2 BELOW THIS LINE
+DON'T DELETE THIS COMMENT
+=========================== -->
+    </head>
+
+<body>
+
+<div class="roses"></div>
+
+<div class="hearts"></div>
+
+<div class="card">
+
+<div id="progress">❤️ Love Meter 0%</div>
+
+<h1 id="title">Loading Memories...</h1>
+
+<h2 id="question"></h2>
+
+<p id="message"></p>
+
+<button class="yes" onclick="yesAnswer()">❤️ Start Our Journey</button>
+
+<button class="no" id="noBtn" onclick="noAnswer()">No 😅</button>
+
+<p id="funny"></p>
+
+</div>
+
+<script>
+
+/* ==================================
+CHANGE NAMES ONLY HERE
+================================== */
+
+const partnerName="Hiba";
+const yourName="Zain";
+
+/* ==================================
+DON'T CHANGE BELOW
+================================== */
+
+const intro=[
+
+"Loading Memories... ❤️",
+
+"12 Years Of Love... 🥹",
+
+"Thousands Of Smiles... 😊",
+
+"One Beautiful Future... 💍"
+
+];
+
+const questions=[
+
+`❤️ Assalam-o-Alaikum ${partnerName}... Ready to read my heart?`,
+
+`🥹 12 saal pehle jo safar shuru hua tha... Kya tum khush ho ke Allah ne hume ek dusre ke liye chuna?`,
+
+`😊 Aaj bhi mera naam dekh kar smile aa jati hai na?`,
+
+`❤️ Agar Allah hume ek aur zindagi de... kya tum phir bhi mujhe choose karogi?`,
+
+`🤍 Kya hum isi tarah hamesha ek dusre ka sahara bane rahenge?`,
+
+`🌹 Kya tum meri best friend bhi ho aur meri mohabbat bhi?`,
+
+`🏡 Kya tum mere saath apna dream home banana chahti ho?`,
+
+`💍 Kya tum har mushkil mein mera haath pakar kar chalogi?`,
+
+`❤️ Kya tum har din mujhe dobara choose karogi?`,
+
+`🥹 Will You Keep Loving Me Forever? ❤️`
+
+];
+
+const funny=[
+
+"😂 Wrong Button!",
+
+"🙈 Your finger slipped!",
+
+"😜 Nice Try!",
+
+"❤️ My Heart Only Accepts YES!",
+
+"🥹 Think Again!",
+
+"🤣 NO is temporarily unavailable!",
+
+"💖 Destiny Already Selected YES!"
+
+];
+
+let current=-1;
+
+let introIndex=0;
+
+const title=document.getElementById("title");
+
+const question=document.getElementById("question");
+
+const message=document.getElementById("message");
+
+const progress=document.getElementById("progress");
+
+const noBtn=document.getElementById("noBtn");
+
+const funnyText=document.getElementById("funny");
+
+function playIntro(){
+
+if(introIndex<intro.length){
+
+title.innerHTML=intro[introIndex];
+
+introIndex++;
+
+setTimeout(playIntro,1200);
+
+}else{
+
+title.innerHTML="❤️ Our Love Story ❤️";
+
+question.innerHTML=`Dear ${partnerName} ❤️`;
+
+message.innerHTML=`Ye sirf website nahi...<br><br>Ye mere dil ka ek chhota sa hissa hai jo sirf tumhare liye banaya hai. 🥹❤️`;
+
+}
+
+}
+
+setTimeout(playIntro,500);
+
+/* ==================================
+PASTE PART 3 BELOW THIS LINE
+DON'T DELETE THIS COMMENT
+================================== */
+    function updateProgress(){
+
+let percent=(current+1)*10;
+
+if(percent<0) percent=0;
+
+progress.innerHTML=`❤️ Love Meter ${percent}%`;
+
+}
+
+function yesAnswer(){
+
+current++;
+
+if(current<questions.length){
+
+question.innerHTML=questions[current];
+
+message.innerHTML="❤️ Every YES makes my heart smile a little more...";
+
+updateProgress();
+
+if(current==4){
+
+message.innerHTML=`🥹 Ek baat bolun...?<br><br>Main aaj bhi tumse utni hi mohabbat karta hoon jitni pehle din karta tha. ❤️`;
+
+}
+
+if(current==7){
+
+message.innerHTML=`❤️ 12 saal... kitni yaadein, kitni hasi, kitni duaein... Aur sabse khoobsurat baat? Hum aaj bhi saath hain.`;
+
+}
+
+}else{
+
+document.querySelector(".card").innerHTML=`
+
+<div id="progress">❤️ Love Meter 100%</div>
+
+<h1>💌 A Letter For You 💌</h1>
+
+<p style="font-size:20px;line-height:2;color:#444;">
+
+Dear <b>${partnerName}</b> ❤️
+
+<br><br>
+
+Mujhe nahi pata mohabbat ko lafzon mein kaise bayan karte hain...
+
+Lekin itna zaroor pata hai...
+
+Tum meri zindagi ki sabse khoobsurat dua ho.
+
+❤️
+
+<br><br>
+
+12 saal pehle jo safar shuru hua...
+
+Aaj bhi us safar ka har lamha mere liye utna hi khaas hai.
+
+<br><br>
+
+Log kehte hain waqt ke saath mohabbat kam ho jaati hai...
+
+Lekin tumhare saath...
+
+Har saal meri mohabbat aur gehri hoti gayi.
+
+❤️
+
+</p>
+
+<button class="yes" onclick="showFinal()">
+
+Continue ❤️
+
+</button>
+
+`;
+
+}
+
+}
+
+function showFinal(){
+
+document.querySelector(".card").innerHTML=`
+
+<h1>💍 Forever Begins Here 💍</h1>
+
+<p style="font-size:22px;line-height:2;color:#444;">
+
+${partnerName} ❤️
+
+<br><br>
+
+Har dua mein...
+
+Har plan mein...
+
+Har future mein...
+
+Sirf tum ho.
+
+❤️
+
+<br><br>
+
+I Promise...
+
+🤍 Respect You
+
+🤍 Protect You
+
+🤍 Support You
+
+🤍 Love You Forever
+
+<br><br>
+
+<b>Will You Keep Choosing Me Forever?</b>
+
+💍❤️
+
+</p>
+
+<button class="yes" onclick="finishLove()">
+
+YES ❤️
+
+</button>
+
+`;
+
+}
+
+function finishLove(){
+
+document.querySelector(".card").innerHTML=`
+
+<h1 style="font-size:42px;color:#ff0066;">
+
+❤️ I LOVE YOU SO MUCH ❤️
+
+</h1>
+
+<p style="font-size:22px;line-height:2;">
+
+Thank You...
+
+For Every Smile...
+
+For Every Prayer...
+
+For Every Year...
+
+For Choosing Me.
+
+🥹❤️
+
+<br><br>
+
+Forever Yours,
+
+<br><br>
+
+<h2 style="color:#e91e63;">
+
+${yourName} ❤️
+
+</h2>
+
+<p>
+
+Made with ❤️ only for ${partnerName}
+
+</p>
+
+`;
+
+}
+
+function noAnswer(){
+
+noBtn.style.position="fixed";
+
+noBtn.style.left=Math.random()*(window.innerWidth-130)+"px";
+
+noBtn.style.top=Math.random()*(window.innerHeight-70)+"px";
+
+funnyText.innerHTML=
+
+funny[Math.floor(Math.random()*funny.length)];
+
+}
+
+/* ==================================
+PASTE PART 4 BELOW THIS LINE
+DON'T DELETE THIS COMMENT
+================================== */
+    // 🌹 Falling Roses
+
+const roses=document.querySelector(".roses");
+
+for(let i=0;i<40;i++){
+
+let rose=document.createElement("div");
+
+rose.className="rose";
+
+rose.innerHTML="🌹";
+
+rose.style.left=Math.random()*100+"vw";
+
+rose.style.fontSize=(18+Math.random()*20)+"px";
+
+rose.style.animationDuration=(5+Math.random()*5)+"s";
+
+rose.style.animationDelay=Math.random()*5+"s";
+
+roses.appendChild(rose);
+
+}
+
+// 💕 Floating Hearts
+
+const hearts=document.querySelector(".hearts");
+
+for(let i=0;i<25;i++){
+
+let heart=document.createElement("div");
+
+heart.className="heart";
+
+heart.innerHTML="❤️";
+
+heart.style.left=Math.random()*100+"vw";
+
+heart.style.fontSize=(18+Math.random()*18)+"px";
+
+heart.style.animationDuration=(6+Math.random()*6)+"s";
+
+heart.style.animationDelay=Math.random()*5+"s";
+
+hearts.appendChild(heart);
+
+}
+
+// ❤️ Beating Title
+
+setInterval(()=>{
+
+const h1=document.querySelector("h1");
+
+if(h1){
+
+h1.style.transform="scale(1.05)";
+
+setTimeout(()=>{
+
+h1.style.transform="scale(1)";
+
+},300);
+
+}
+
+},1000);
+
+// ❤️ Little Footer Message
+
+console.log("Made with ❤️ by Zain");
+
+// ===== END OF WEBSITE =====
+
+</script>
+
+</body>
+
+</html>
