@@ -3,105 +3,206 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>❤️ My Love Proposal ❤️</title>
 
 <style>
+
 *{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial,sans-serif;
 }
 
 body{
-    font-family:Arial,sans-serif;
-    background:linear-gradient(135deg,#ff9a9e,#fad0c4,#fad0c4);
-    overflow:hidden;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    height:100vh;
+background:linear-gradient(135deg,#ff9a9e,#fad0c4,#fad0c4);
+overflow:hidden;
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+}
+
+/* ⭐ CHANGE NAME HERE ⭐ */
+:root{
+--partner-name:"HIBA";
 }
 
 /* Falling Roses */
 
 .roses{
-    position:fixed;
-    width:100%;
-    height:100%;
-    top:0;
-    left:0;
-    overflow:hidden;
-    pointer-events:none;
+position:fixed;
+width:100%;
+height:100%;
+top:0;
+left:0;
+pointer-events:none;
+overflow:hidden;
 }
 
 .rose{
-    position:absolute;
-    top:-50px;
-    font-size:30px;
-    animation:fall linear infinite;
+position:absolute;
+top:-50px;
+font-size:30px;
+animation:fall linear infinite;
 }
 
 @keyframes fall{
-    from{
-        transform:translateY(-50px) rotate(0deg);
-        opacity:1;
-    }
-    to{
-        transform:translateY(110vh) rotate(360deg);
-        opacity:.9;
-    }
+
+0%{
+transform:translateY(-50px) rotate(0deg);
+opacity:1;
+}
+
+100%{
+transform:translateY(110vh) rotate(360deg);
+opacity:.8;
+}
+
+}
+
+/* Floating Hearts */
+
+.heart{
+position:absolute;
+bottom:-50px;
+font-size:22px;
+animation:floatHeart linear infinite;
+opacity:.7;
+}
+
+@keyframes floatHeart{
+
+0%{
+transform:translateY(0);
+opacity:.8;
+}
+
+100%{
+transform:translateY(-120vh);
+opacity:0;
+}
+
 }
 
 /* Card */
 
 .card{
-    width:90%;
-    max-width:520px;
-    background:white;
-    padding:30px;
-    border-radius:20px;
-    text-align:center;
-    box-shadow:0 0 25px rgba(0,0,0,.25);
-    z-index:2;
+
+width:90%;
+max-width:520px;
+
+background:rgba(255,255,255,.22);
+
+backdrop-filter:blur(15px);
+
+padding:30px;
+
+border-radius:25px;
+
+text-align:center;
+
+box-shadow:0 0 35px rgba(0,0,0,.25);
+
+border:2px solid rgba(255,255,255,.4);
+
+z-index:5;
+
+animation:popup .8s;
+
+}
+
+@keyframes popup{
+
+0%{
+transform:scale(.5);
+opacity:0;
+}
+
+100%{
+transform:scale(1);
+opacity:1;
+}
+
 }
 
 h1{
-    color:#e91e63;
-    margin-bottom:20px;
+
+color:#ff0066;
+
+margin-bottom:20px;
+
+font-size:34px;
+
 }
 
 #question{
-    font-size:23px;
-    margin-bottom:25px;
-    color:#444;
+
+font-size:24px;
+
+color:#222;
+
+margin-bottom:25px;
+
+font-weight:bold;
+
 }
 
 button{
-    padding:12px 28px;
-    font-size:18px;
-    border:none;
-    border-radius:40px;
-    cursor:pointer;
-    margin:10px;
+
+padding:13px 30px;
+
+border:none;
+
+border-radius:40px;
+
+font-size:20px;
+
+cursor:pointer;
+
+margin:10px;
+
+transition:.3s;
+
 }
 
 .yes{
-    background:#4CAF50;
-    color:white;
+
+background:#4CAF50;
+
+color:white;
+
+}
+
+.yes:hover{
+
+transform:scale(1.1);
+
 }
 
 .no{
-    background:#f44336;
-    color:white;
-    position:relative;
+
+background:#f44336;
+
+color:white;
+
+position:relative;
+
 }
 
 #funny{
-    color:#ff0066;
-    font-size:18px;
-    margin-top:20px;
-    font-weight:bold;
+
+margin-top:20px;
+
+font-size:20px;
+
+color:#e91e63;
+
+font-weight:bold;
+
 }
+
 </style>
 </head>
 
@@ -109,13 +210,13 @@ button{
 
 <div class="roses"></div>
 
+<div id="hearts"></div>
+
 <div class="card">
 
 <h1>❤️ Just For You ❤️</h1>
 
-<h2 id="question">
-1. ❤️ ____, are you happy that Allah brought us together?
-</h2>
+<h2 id="question"></h2>
 
 <button class="yes" onclick="yesAnswer()">Yes ❤️</button>
 
@@ -127,56 +228,31 @@ button{
 
 <script>
 
+// ⭐ CHANGE NAME HERE ⭐
+const partnerName = "Hiba";
+
 const questions=[
 
-"1. ❤️ ____, are you happy that Allah brought us together?",
+`1. ❤️ ${partnerName}, are you happy that Allah brought us together?`,
 
-"2. 🥰 ____, do you smile whenever you think about me?",
+`2. 🥰 ${partnerName}, do you smile whenever you think about me?`,
 
-"3. 🌹 ____, will you always let me be the reason for your smile?",
+`3. 🌹 ${partnerName}, will you always let me be the reason for your smile?`,
 
-"4. 🤗 ____, will you always hold my hand in every situation?",
+`4. 🤗 ${partnerName}, will you always hold my hand forever?`,
 
-"5. 💖 ____, do you believe we are made for each other?",
+`5. 💖 ${partnerName}, do you believe we are made for each other?`,
 
-"6. ✨ ____, will you make countless beautiful memories with me?",
+`6. ✨ ${partnerName}, will you make countless beautiful memories with me?`,
 
-"7. 🏡 ____, are you excited to build our dream home together?",
+`7. 🏡 ${partnerName}, are you excited for our future home together?`,
 
-"8. 💍 ____, will you always support me through every happiness and hardship?",
+`8. 💍 ${partnerName}, will you support me in every happiness and hardship?`,
 
-"9. ❤️ ____, will you love me a little more every day after our marriage?",
+`9. ❤️ ${partnerName}, will you always stay by my side?`,
 
-"10. 👑 ____, will you be my forever, my soulmate, and the love of my life? ❤️"
-
-];
-
-const funny=[
-
-"😂 Wrong answer!",
-
-"🙈 Your finger slipped!",
-
-"😜 Nice try!",
-
-"🤣 No option is disabled!",
-
-"❤️ My heart says YES!",
-
-"😁 Don't break my heart!",
-
-"🥹 Please think again!",
-
-"😅 Are you sure?",
-
-"😂 Impossible!",
-
-"💖 Destiny says YES!"
-
-];
-
-let current=0;
-  function yesAnswer(){
+`10. 👑 ${partnerName}, will you be my forever soulmate? ❤️`
+    function yesAnswer(){
 
 current++;
 
@@ -190,22 +266,34 @@ document.getElementById("funny").innerHTML="";
 
 document.querySelector(".card").innerHTML=`
 
-<h1>💖 Thank You 💖</h1>
+<h1>💖 I Love You 💖</h1>
 
-<h2>____ ❤️</h2>
+<h2>${partnerName} ❤️</h2>
 
-<h2>I Promise...</h2>
+<h3>Will You Marry Me? 💍</h3>
 
-<p style="font-size:22px;margin-top:20px;">
-I'll love you,<br>
-Respect you,<br>
+<p style="font-size:22px;margin-top:20px;line-height:1.8;">
+
+From the day you came into my life,<br>
+
+Everything became more beautiful. ❤️<br><br>
+
+I promise to respect you,<br>
+
 Support you,<br>
-Stand beside you in every happiness and hardship,<br>
-And stay with you forever. ❤️
+
+Protect you,<br>
+
+Make you smile every day,<br>
+
+And love you forever. 🥹❤️
+
 </p>
 
-<h2 style="margin-top:30px;">
-I Love You So Much 🥹❤️
+<h2 style="margin-top:25px;">
+
+Forever Yours ❤️
+
 </h2>
 
 `;
@@ -216,13 +304,13 @@ I Love You So Much 🥹❤️
 
 function noAnswer(){
 
-let btn=document.getElementById("noBtn");
+const btn=document.getElementById("noBtn");
 
 btn.style.position="fixed";
 
 btn.style.left=Math.random()*(window.innerWidth-120)+"px";
 
-btn.style.top=Math.random()*(window.innerHeight-80)+"px";
+btn.style.top=Math.random()*(window.innerHeight-70)+"px";
 
 document.getElementById("funny").innerHTML=
 
@@ -230,11 +318,11 @@ funny[Math.floor(Math.random()*funny.length)];
 
 }
 
-// Falling Roses
+// 🌹 Falling Roses
 
 const roses=document.querySelector(".roses");
 
-for(let i=0;i<35;i++){
+for(let i=0;i<40;i++){
 
 let rose=document.createElement("div");
 
@@ -254,8 +342,31 @@ roses.appendChild(rose);
 
 }
 
+// 💕 Floating Hearts
+
+const hearts=document.getElementById("hearts");
+
+for(let i=0;i<20;i++){
+
+let heart=document.createElement("div");
+
+heart.className="heart";
+
+heart.innerHTML="💖";
+
+heart.style.left=Math.random()*100+"vw";
+
+heart.style.fontSize=(18+Math.random()*20)+"px";
+
+heart.style.animationDuration=(6+Math.random()*6)+"s";
+
+heart.style.animationDelay=Math.random()*5+"s";
+
+hearts.appendChild(heart);
+
+}
+
 </script>
 
 </body>
-
 </html>
