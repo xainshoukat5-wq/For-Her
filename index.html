@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>❤️ My Love Proposal ❤️</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:Arial,sans-serif;
+    background:linear-gradient(135deg,#ff9a9e,#fad0c4,#fad0c4);
+    overflow:hidden;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height:100vh;
+}
+
+/* Falling Roses */
+
+.roses{
+    position:fixed;
+    width:100%;
+    height:100%;
+    top:0;
+    left:0;
+    overflow:hidden;
+    pointer-events:none;
+}
+
+.rose{
+    position:absolute;
+    top:-50px;
+    font-size:30px;
+    animation:fall linear infinite;
+}
+
+@keyframes fall{
+    from{
+        transform:translateY(-50px) rotate(0deg);
+        opacity:1;
+    }
+    to{
+        transform:translateY(110vh) rotate(360deg);
+        opacity:.9;
+    }
+}
+
+/* Card */
+
+.card{
+    width:90%;
+    max-width:520px;
+    background:white;
+    padding:30px;
+    border-radius:20px;
+    text-align:center;
+    box-shadow:0 0 25px rgba(0,0,0,.25);
+    z-index:2;
+}
+
+h1{
+    color:#e91e63;
+    margin-bottom:20px;
+}
+
+#question{
+    font-size:23px;
+    margin-bottom:25px;
+    color:#444;
+}
+
+button{
+    padding:12px 28px;
+    font-size:18px;
+    border:none;
+    border-radius:40px;
+    cursor:pointer;
+    margin:10px;
+}
+
+.yes{
+    background:#4CAF50;
+    color:white;
+}
+
+.no{
+    background:#f44336;
+    color:white;
+    position:relative;
+}
+
+#funny{
+    color:#ff0066;
+    font-size:18px;
+    margin-top:20px;
+    font-weight:bold;
+}
+</style>
+</head>
+
+<body>
+
+<div class="roses"></div>
+
+<div class="card">
+
+<h1>❤️ Just For You ❤️</h1>
+
+<h2 id="question">
+1. ❤️ ____, are you happy that Allah brought us together?
+</h2>
+
+<button class="yes" onclick="yesAnswer()">Yes ❤️</button>
+
+<button class="no" id="noBtn" onclick="noAnswer()">No 😅</button>
+
+<p id="funny"></p>
+
+</div>
+
+<script>
+
+const questions=[
+
+"1. ❤️ ____, are you happy that Allah brought us together?",
+
+"2. 🥰 ____, do you smile whenever you think about me?",
+
+"3. 🌹 ____, will you always let me be the reason for your smile?",
+
+"4. 🤗 ____, will you always hold my hand in every situation?",
+
+"5. 💖 ____, do you believe we are made for each other?",
+
+"6. ✨ ____, will you make countless beautiful memories with me?",
+
+"7. 🏡 ____, are you excited to build our dream home together?",
+
+"8. 💍 ____, will you always support me through every happiness and hardship?",
+
+"9. ❤️ ____, will you love me a little more every day after our marriage?",
+
+"10. 👑 ____, will you be my forever, my soulmate, and the love of my life? ❤️"
+
+];
+
+const funny=[
+
+"😂 Wrong answer!",
+
+"🙈 Your finger slipped!",
+
+"😜 Nice try!",
+
+"🤣 No option is disabled!",
+
+"❤️ My heart says YES!",
+
+"😁 Don't break my heart!",
+
+"🥹 Please think again!",
+
+"😅 Are you sure?",
+
+"😂 Impossible!",
+
+"💖 Destiny says YES!"
+
+];
+
+let current=0;
+  function yesAnswer(){
+
+current++;
+
+if(current<questions.length){
+
+document.getElementById("question").innerHTML=questions[current];
+
+document.getElementById("funny").innerHTML="";
+
+}else{
+
+document.querySelector(".card").innerHTML=`
+
+<h1>💖 Thank You 💖</h1>
+
+<h2>____ ❤️</h2>
+
+<h2>I Promise...</h2>
+
+<p style="font-size:22px;margin-top:20px;">
+I'll love you,<br>
+Respect you,<br>
+Support you,<br>
+Stand beside you in every happiness and hardship,<br>
+And stay with you forever. ❤️
+</p>
+
+<h2 style="margin-top:30px;">
+I Love You So Much 🥹❤️
+</h2>
+
+`;
+
+}
+
+}
+
+function noAnswer(){
+
+let btn=document.getElementById("noBtn");
+
+btn.style.position="fixed";
+
+btn.style.left=Math.random()*(window.innerWidth-120)+"px";
+
+btn.style.top=Math.random()*(window.innerHeight-80)+"px";
+
+document.getElementById("funny").innerHTML=
+
+funny[Math.floor(Math.random()*funny.length)];
+
+}
+
+// Falling Roses
+
+const roses=document.querySelector(".roses");
+
+for(let i=0;i<35;i++){
+
+let rose=document.createElement("div");
+
+rose.className="rose";
+
+rose.innerHTML="🌹";
+
+rose.style.left=Math.random()*100+"vw";
+
+rose.style.fontSize=(20+Math.random()*20)+"px";
+
+rose.style.animationDuration=(5+Math.random()*5)+"s";
+
+rose.style.animationDelay=Math.random()*5+"s";
+
+roses.appendChild(rose);
+
+}
+
+</script>
+
+</body>
+
+</html>
